@@ -5,48 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bermain dengan Warna</title>
     <link rel="stylesheet" href="style2.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
     <h1>Bermain dengan Warna</h1>
 
     <div>
-        <button id="tombolMerah">Merah</button>
-        <button id="tombolBiru">Biru</button>
-        <button id="tombolKuning">Kuning</button>
+        <button class="colorButton" data-color="#ff6b6b">Merah</button>
+        <button class="colorButton" data-color="#4ecdc4">Biru</button>
+        <button class="colorButton" data-color="#ffd93d">Kuning</button>
     </div>
 
     <div id="kotakWarna"></div>
 
     <div>
-        <button id="sembunyikanKotak">Sembunyikan Kotak</button>
-        <button id="tampilkanKotak">Tampilkan Kotak</button>
+        <button id="toggleKotak">Sembunyikan Kotak</button>
     </div>
 
     <p>Klik tombol warna untuk mengubah warna kotak.</p>
     <p>Gunakan tombol Sembunyikan dan Tampilkan untuk menyembunyikan dan menampilkan kotak.</p>
 
-	<script>
+    <script>
         $(document).ready(function() {
-            $('#tombolMerah').click(function() {
-                $('#kotakWarna').css('background-color', '#ff6b6b');
-            });
-            
-            $('#tombolBiru').click(function() {
-                $('#kotakWarna').css('background-color', '#4ecdc4');
-            });
-            
-            $('#tombolKuning').click(function() {
-                $('#kotakWarna').css('background-color', '#ffd93d');
+            $('.colorButton').click(function() {
+                $('#kotakWarna').css('background-color', $(this).data('color'));
             });
 
-            $('#sembunyikanKotak').click(function() {
-                $('#kotakWarna').hide();
-            });
-            
-            $('#tampilkanKotak').click(function() {
-                $('#kotakWarna').show();
+            $('#toggleKotak').click(function() {
+                $('#kotakWarna').toggle();
+                $(this).text($(this).text() === 'Sembunyikan Kotak' ? 'Tampilkan Kotak' : 'Sembunyikan Kotak'); // Akhirnya pakai ternary cuy
             });
         });
     </script>
